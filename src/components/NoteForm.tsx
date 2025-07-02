@@ -70,7 +70,7 @@ export default function NoteForm({ onNoteCreated }: { onNoteCreated: () => void 
       <select
         value={semester}
         onChange={(e) => setSemester(e.target.value)}
-        className="w-full p-2 border border-gray-300 rounded text-black"
+        className="w-full p-2 border border-gray-300 rounded text-white"
       >
         {Array.from({ length: 8 }, (_, i) => (
           <option key={i + 1} value={i + 1}>

@@ -30,7 +30,7 @@ export default function NoteItem({ note, onChange }: { note: any; onChange: () =
   }
 
   return (
-    <li className="bg-white p-4 rounded shadow text-left">
+    <li className="bg-black p-4 rounded shadow text-left">
       {isEditing ? (
         <>
           <input
@@ -91,12 +91,12 @@ export default function NoteItem({ note, onChange }: { note: any; onChange: () =
       ) : (
         <>
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold text-black">{note.title}</h2>
-            <p className="text-gray-700 text-sm">Semester: {note.semester}</p>
+            <h2 className="text-xl font-semibold text-white">{note.title}</h2>
+            <p className="text-white text-sm">Semester: {note.semester}</p>
           </div>
 
-          <p className="text-sm text-gray-600">Degree: {note.degree}</p>
-          <p className="text-gray-800 mt-2">{note.content}</p>
+          <p className="text-sm text-white">Degree: {note.degree}</p>
+          <p className="text-white mt-2">{note.content}</p>
 
           {note.file_url && note.file_url.match(/\.(jpeg|jpg|png|gif)$/i) && (
             <img
@@ -117,7 +117,7 @@ export default function NoteItem({ note, onChange }: { note: any; onChange: () =
             </a>
           )}
 
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm text-white mt-1">
             Created at: {new Date(note.created_at).toLocaleString()}
           </p>
 
