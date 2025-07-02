@@ -1,31 +1,42 @@
 # 🗒️ NoteStack
 
-NoteStack is a secure, full-stack notes application built with:
+**NoteStack** is a secure, full-stack notes application built to help users manage, upload, and organize notes effectively with authentication and media support.
 
-- Next.js (App Router)
-- Supabase Auth
-- Supabase Database
-- React Query for data fetching and caching
-- Zod for form validation
-- Tailwind CSS for beautiful UI
+---
+
+## Tech Stack
+
+- **Next.js**
+- **Supabase**
+  - Auth (JWT-based)
+  - Database
+  - Storage Buckets (File Uploads)
+- **React Query** – Data fetching & caching
+- **Zod** – Form validation
+- **Tailwind CSS** – Responsive and beautiful UI
+- **Lucide Icons** – Elegant icon set
 
 ---
 
 ## Features
 
-- User authentication (sign up, login, logout)
-- Notes CRUD (create, read, update, delete)
-- Real-time validation using Zod
-- Supabase sessions for secure access
-- Protected routes via middleware
-- Responsive and elegant UI
+- **User Authentication** (Sign up, login, logout)
+-  **Notes CRUD**
+  - Create, edit, delete, and view notes
+  - Attach **images or files** to notes via Supabase buckets
+-  **Form Validation** using Zod
+-  **File Uploads**
+  - Media/files stored in folders named after user IDs
+  - Image previews and file links
+- **Dashboard Sidebar Navigation**
+  - Consistent sidebar across all dashboard routes
+  - Links to: Dashboard, Upload, My Content
+-  **React Query Integration**
+  - Efficient data fetching
+  - Real-time updates after creating/editing/deleting notes
+-  **Responsive and polished UI**
+- **Editable fields**: title, content, degree, semester, file
+-  **Media file editing** during note updates
 
 ---
-
-## Upcoming
-
-- **Dashboard to be introduced soon** – View summaries, quick stats, and more!
-- File uploads via Supabase buckets
-- Note categories and tagging
-- Advanced search and filtering
 
