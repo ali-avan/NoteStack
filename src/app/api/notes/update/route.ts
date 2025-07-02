@@ -30,17 +30,53 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  const { id, title, content } = await req.json()
+  const formData = await req.formData()
+
+  const id = formData.get('id') as string
+  const title = formData.get('title') as string
+  const content = formData.get('content') as string
+  const degree = formData.get('degree') as string
+  const semester = formData.get('semester') as string
+  const file = formData.get('file') as File | null
+
+  let fileUrl: string | undefined = undefined
+
+  // If a new file is provided, upload it
+  if (file && typeof file !== 'string') {
+    const ext = file.name.split('.').pop()
+    const filePath = `${user.id}/${Date.now()}.${ext}`
+
+    const { error: uploadError } = await supabase.storage
+      .from('notes-bucket')
+      .upload(filePath, file, { contentType: file.type })
+
+    if (uploadError) {
+      console.error("File upload error:", uploadError.message)
+      return NextResponse.json({ error: uploadError.message }, { status: 500 })
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from('notes-bucket')
+      .getPublicUrl(filePath)
+
+    fileUrl = publicUrlData.publicUrl
+  }
+
+  const updateFields: any = {
+    title,
+    content,
+    degree,
+    semester,
+    updated_at: new Date().toISOString(),
+  }
+
+  if (fileUrl) updateFields.file_url = fileUrl
 
   const { error } = await supabase
     .from('notes')
-    .update({
-      title,
-      content,
-      updated_at: new Date().toISOString(),
-    })
+    .update(updateFields)
     .eq('id', id)
-    .eq('user_id', user.id) 
+    .eq('user_id', user.id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
