@@ -1,4 +1,4 @@
-# 🗒️ NoteStack
+#  NoteStack
 
 **NoteStack** is a secure, full-stack notes application built to help users manage, upload, and organize notes effectively with authentication and media support.
 
